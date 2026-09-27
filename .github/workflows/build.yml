@@ -1,0 +1,10 @@
+name: build
+on: [push, pull_request]
+jobs:
+  gcc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make
+      - run: timeout 2 ./metrics-agent 1 > /tmp/metrics.jsonl || test $? -eq 124
+      - run: head -1 /tmp/metrics.jsonl | grep 'cpu_usage_pct'
