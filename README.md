@@ -2,6 +2,8 @@
 
 A lightweight **C/Linux observability agent** that reads host telemetry directly from Linux kernel interfaces and emits newline-delimited JSON for downstream collection.
 
+![Architecture](https://raw.githubusercontent.com/oleglihvoinen/oleglihvoinen.github.io/main/assets/architecture/linux-system-metrics-agent.png)
+
 ## What it demonstrates
 - C systems programming on Linux
 - `/proc/stat`, `/proc/meminfo`, `/proc/net/dev` and `statvfs`
