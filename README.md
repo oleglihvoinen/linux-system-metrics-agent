@@ -4,7 +4,7 @@ A production-oriented **C/Linux observability agent** that reads host telemetry 
 
 ![Architecture](https://raw.githubusercontent.com/oleglihvoinen/oleglihvoinen.github.io/main/assets/architecture/linux-system-metrics-agent.png)
 
-## Executive summary
+## Summary
 
 The agent collects CPU, memory, filesystem and network telemetry with minimal dependencies and a deliberately small runtime footprint. It is designed around a clean separation between **metric collection** and **transport**, so the same collector can feed Kafka, OpenTelemetry, Fluent Bit, journald or another observability/data platform without rewriting the sampling logic.
 
