@@ -1,0 +1,19 @@
+[Unit]
+Description=Linux System Metrics Agent
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/linux-system-metrics-agent/metrics-agent 10
+Restart=on-failure
+RestartSec=5
+User=metrics-agent
+Group=metrics-agent
+StandardOutput=journal
+StandardError=journal
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
