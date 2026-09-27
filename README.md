@@ -3,7 +3,6 @@
 A lightweight **C/Linux observability agent** that reads host telemetry directly from Linux kernel interfaces and emits newline-delimited JSON for downstream collection.
 
 ## What it demonstrates
-
 - C systems programming on Linux
 - `/proc/stat`, `/proc/meminfo`, `/proc/net/dev` and `statvfs`
 - CPU sampling, memory, disk and network telemetry
@@ -12,22 +11,17 @@ A lightweight **C/Linux observability agent** that reads host telemetry directly
 - GCC build automation and GitHub Actions validation
 
 ## Architecture
+Linux kernel interfaces → C collector → JSONL telemetry → downstream collector → Kafka / observability platform / warehouse.
 
-Linux kernel interfaces → C collector → JSONL telemetry → downstream log/stream collector → Kafka / observability platform / warehouse.
-
-The current repository intentionally keeps transport decoupled from collection. This makes the agent small and lets different delivery mechanisms be attached without changing the metrics layer.
+The transport is intentionally decoupled from collection so different delivery mechanisms can be attached without changing the metrics layer.
 
 ## Build and run
-
 ```bash
 make
 ./metrics-agent 5
 ```
 
-The optional argument is the collection interval in seconds.
-
 ## Production evolution
-
-A production agent would add configuration parsing, TLS-authenticated transport, backpressure, local buffering, richer filesystem/device metrics, Prometheus/OpenTelemetry export, structured logging and packaging.
+Configuration parsing, TLS-authenticated transport, backpressure, local buffering, richer device metrics, Prometheus/OpenTelemetry export, structured logging and packaging.
 
 **Technologies:** C · Linux · POSIX · /proc · statvfs · systemd · JSON · GCC · GitHub Actions · observability
